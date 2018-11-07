@@ -514,7 +514,14 @@ namespace
 
   void SubcommandImpl::action()
   {
+    SEC << endl;
+    SEC << "C " << options()._detected._cmd << endl;
+    SEC << "N " << options()._detected._name << endl;
+    SEC << "P " << options()._detected._path << endl;
+    SEC << "A " << options()._args << endl;
+
     setArg0( (options()._detected._path / options()._detected._name).asString() );
+    SEC << endl;
     RunCommand cmd( options()._args );
     if ( cmd.run() != 0 )
       throw( Out::Error( cmd.exitStatus(), cmd.execError() ) );
